@@ -7,7 +7,7 @@ import fs2.{Stream, text}
 
 class FormattingFileText(limit: Int) {
 
-    def format(inputPath: String, outputPath: String): Unit = {
+    def format(inputPath: String, outputPath: String): Unit =
         Files[IO]
             .readAll(Path(inputPath))
             .through(text.utf8.decode)
@@ -19,6 +19,5 @@ class FormattingFileText(limit: Int) {
             .compile
             .drain
             .unsafeRunSync()
-    }
 
 }
